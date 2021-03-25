@@ -1,11 +1,17 @@
-<h1>Clients</h1>
+<!-- ici on herite de notre template -->
+@extends('layout')
 
-<ul>
+<!-- ici on injecte le contenu de notre page à la layout -->
+@section('content')
+    <h1>Clients</h1>
 
-    @foreach($clients as $client)
+    <ul>
 
-        <li>{{ $client }}</li>
-        
-    @endforeach
+        @foreach ($clients as $client)
 
-</ul>
+            <li>{{ $client }}</li>
+
+        @endforeach
+
+    </ul>
+@endsection
