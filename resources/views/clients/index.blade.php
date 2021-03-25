@@ -9,7 +9,7 @@
 
         @foreach ($clients as $client)
 
-            <li>{{ $client }}</li>
+            <li>{{ $client->name }}</li>
 
         @endforeach
 
