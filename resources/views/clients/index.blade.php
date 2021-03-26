@@ -33,6 +33,17 @@
                 </div>
             @enderror
         </div>
+        <div class="form-group">
+            <select class="custom-select  @error('status') is-invalid @enderror" name="status">
+                <option value="1">Actif</option>
+                <option value="0">Inactif</option> 
+            </select>
+            @error('status')
+                <div class="invalid-feedback">
+                    {{ $errors->first('status') }}
+                </div>
+            @enderror
+        </div>
         <button type="submit" class="btn btn-primary">Ajouter le client</button>
 
     </form>
