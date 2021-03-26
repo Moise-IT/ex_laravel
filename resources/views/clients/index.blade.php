@@ -6,12 +6,22 @@
     <h1>Clients</h1>
 
     <ul>
-
         @foreach ($clients as $client)
 
             <li>{{ $client->name }}</li>
 
         @endforeach
-
     </ul>
+
+    <hr> 
+    <form action="/clients" method="post">
+        <div class="form-group">
+            <!-- Faille CSRF -->
+            @csrf
+
+            <input type="text" class="form-control" name="pseudo">
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter le client</button>
+
+    </form>
 @endsection

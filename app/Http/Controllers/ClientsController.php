@@ -16,4 +16,18 @@ class ClientsController extends Controller
             'clients' => $clients
         ]);
     }
+
+
+    public function store(Request $request){
+        //recuperation de pseudo du client 
+        $pseudo = $request->input('pseudo');
+        //creation d'un objet Client
+        $client = new Client();
+        //affectation de speudo dans la prorieté name de l'objet 
+        $client->name = $pseudo;
+        //Persistser les informations dans la BDD
+        $client->save();
+        //rediction sur la meme page
+        return back();
+    }
 }
