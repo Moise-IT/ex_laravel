@@ -19,6 +19,10 @@ class ClientsController extends Controller
 
 
     public function store(Request $request){
+        //validation 
+        $request->validate([
+            'name' => 'required'
+        ]);
         //recuperation de pseudo du client 
         $pseudo = $request->input('pseudo');
         //creation d'un objet Client

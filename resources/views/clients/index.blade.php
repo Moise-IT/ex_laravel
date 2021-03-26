@@ -18,8 +18,12 @@
         <div class="form-group">
             <!-- Faille CSRF -->
             @csrf
-
-            <input type="text" class="form-control" name="pseudo">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Enrez un name">
+            @error('name')
+                <div class="invalid-feedback">
+                    {{ $errors->first('name') }}
+                </div>
+            @enderror
         </div>
         <button type="submit" class="btn btn-primary">Ajouter le client</button>
 
