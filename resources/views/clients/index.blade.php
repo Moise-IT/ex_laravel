@@ -8,7 +8,7 @@
     <ul>
         @foreach ($clients as $client)
 
-            <li>{{ $client->name }}</li>
+            <li>{{ $client->name }} | <span class="text-muted">{{ $client->email }}</span></li>
 
         @endforeach
     </ul>
@@ -18,10 +18,18 @@
         <div class="form-group">
             <!-- Faille CSRF -->
             @csrf
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Enrez un name">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Name">
             @error('name')
                 <div class="invalid-feedback">
                     {{ $errors->first('name') }}
+                </div>
+            @enderror
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email">
+            @error('email')
+                <div class="invalid-feedback">
+                    {{ $errors->first('email') }}
                 </div>
             @enderror
         </div>

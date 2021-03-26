@@ -21,14 +21,19 @@ class ClientsController extends Controller
     public function store(Request $request){
         //validation 
         $request->validate([
-            'name' => 'required'
+            'name' => 'required|min:3',
+            'email' => 'required|email',
         ]);
-        //recuperation de pseudo du client 
-        $pseudo = $request->input('pseudo');
+        //recuperation de le nom du client 
+        $name = $request->input('name');
+        //recuperation de l'email du client 
+        $email = $request->input('email');
         //creation d'un objet Client
         $client = new Client();
-        //affectation de speudo dans la prorieté name de l'objet 
-        $client->name = $pseudo;
+        //affectation de name dans la prorieté name de l'objet 
+        $client->name = $name;
+        //affectation de l'email dans la prorieté name de l'objet 
+        $client->email = $email;
         //Persistser les informations dans la BDD
         $client->save();
         //rediction sur la meme page
