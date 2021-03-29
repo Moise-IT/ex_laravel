@@ -5,7 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class entreprise extends Model
+class Entreprise extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+
+    public function client()
+    {
+        return $this->hasMany(Client::class);
+    }
 }

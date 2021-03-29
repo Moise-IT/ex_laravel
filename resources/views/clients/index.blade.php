@@ -8,7 +8,7 @@
     <ul>
         @foreach ($clients as $client)
 
-            <li>{{ $client->name }} | <span class="text-muted">{{ $client->email }}</span></li>
+            <li>{{ $client->name }} | <span class="text-muted">{{ $client->entreprise->name }}</span></li>
 
         @endforeach
     </ul>
@@ -41,6 +41,18 @@
             @error('status')
                 <div class="invalid-feedback">
                     {{ $errors->first('status') }}
+                </div>
+            @enderror
+        </div>
+        <div class="form-group">
+            <select class="custom-select  @error('entreprise_id') is-invalid @enderror" name="entreprise_id">
+                @foreach ($entreprises as $entreprise )
+                    <option value="{{ $entreprise->id }}">{{ $entreprise->name }}</option>    
+                @endforeach
+            </select>
+            @error('entreprise_id')
+                <div class="invalid-feedback">
+                    {{ $errors->first('entreprise_id') }}
                 </div>
             @enderror
         </div>
