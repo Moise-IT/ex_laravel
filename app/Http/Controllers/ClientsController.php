@@ -43,4 +43,14 @@ class ClientsController extends Controller
         //redirection sur la meme page
         return back();
     }
+
+    //recuperation d'un client via son id
+    public function show(Client $client){
+       //recupere le client
+       //$client = Client::where('id',$id)->firstOrFail();
+       //envoie l'information à la vue
+       return View('clients.show',[
+           'client' => $client
+       ]);
+    }
 }

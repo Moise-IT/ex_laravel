@@ -30,4 +30,6 @@ Route::get('/clients',[App\Http\Controllers\ClientsController::class,'index']);
 
 Route::get('/clients/create',[App\Http\Controllers\ClientsController::class,'create']);
 
+Route::get('/clients/{client}',[App\Http\Controllers\ClientsController::class,'show']);
+
 Route::post('/clients',[App\Http\Controllers\ClientsController::class,'store']);
