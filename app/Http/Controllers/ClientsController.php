@@ -22,9 +22,12 @@ class ClientsController extends Controller
     public function create(){
         //recuperer toutes les entreprises dans la BDD
         $entreprises = Entreprise::all();
+        //creation d'un objet client vide
+        $client = new Client();
         //retourne la vue et onvoie la liste des entreprises
         return View('clients.create',[
-            'entreprises' => $entreprises
+            'entreprises' => $entreprises,
+            'client' => $client
         ]);
     }
 
@@ -52,5 +55,38 @@ class ClientsController extends Controller
        return View('clients.show',[
            'client' => $client
        ]);
+    }
+
+    //afficher le formulaire pour modifier les client
+    public function edit(Client $client){
+        //recuperer toutes les entreprises dans la BDD
+        $entreprises = Entreprise::all();
+        //envoie l'information à la vue
+       return View('clients.edit',[
+            'client' => $client,
+            'entreprises' => $entreprises
+        ]);
+    }
+
+    //Modifie les clients dans la BDD
+    public function update(Client $client, Request $request){
+        //validation et recuperations de données
+        $datas = $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email',
+            'status' => 'required|integer',
+            'entreprise_id' => 'required|integer'
+        ]);
+
+        $client->update($datas);
+
+        return redirect('clients/'.$client->id);
+    }
+
+    public function destroy(Client $client){
+        //supprimer le client
+        $client->delete();
+        //
+        return redirect('clients');
     }
 }

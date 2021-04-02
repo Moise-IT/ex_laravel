@@ -32,4 +32,11 @@ Route::get('/clients/create',[App\Http\Controllers\ClientsController::class,'cre
 
 Route::get('/clients/{client}',[App\Http\Controllers\ClientsController::class,'show']);
 
+Route::get('/clients/{client}/edit',[App\Http\Controllers\ClientsController::class,'edit']);
+
 Route::post('/clients',[App\Http\Controllers\ClientsController::class,'store']);
+
+Route::patch('/clients/{client}',[App\Http\Controllers\ClientsController::class,'update']);
+
+Route::delete('/clients/{client}',[App\Http\Controllers\ClientsController::class,'destroy']);
+
