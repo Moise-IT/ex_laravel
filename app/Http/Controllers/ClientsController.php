@@ -8,15 +8,22 @@ use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
-    public function list(){  
+    public function index(){  
         //recuperer tous les clients se trouvant dans la BDD qui sont actives
-        $clients = Client::status();
-        //recuperer toutes les entreprises dans la BDD
-        $entreprises = Entreprise::all();
+        $clients = Client::all();
 
         return view('clients.index',[
-            //enviue la liste à la vue
-            'clients' => $clients,
+            //envoie la liste de clients à la vue
+            'clients' => $clients
+        ]);
+    }
+
+    //affiche le formulaire d'ajoute
+    public function create(){
+        //recuperer toutes les entreprises dans la BDD
+        $entreprises = Entreprise::all();
+        //retourne la vue et onvoie la liste des entreprises
+        return View('clients.create',[
             'entreprises' => $entreprises
         ]);
     }
@@ -33,7 +40,7 @@ class ClientsController extends Controller
 
         //enregistrer les informations dans la BDD 
         Client::create($datas);
-        //rediction sur la meme page
+        //redirection sur la meme page
         return back();
     }
 }

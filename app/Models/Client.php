@@ -23,4 +23,12 @@ class Client extends Model
     {
         return $this->belongsTo(Entreprise::class);
     }
+
+    //
+    public function getStatusAttribute($attributes){
+        return [
+            '0' => 'Inactif',
+            '1' => 'Actif'
+        ][$attributes];
+    }
 }

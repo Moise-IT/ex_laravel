@@ -26,7 +26,8 @@ Route::get('/a-propos',function(){
     return view('a-propos');
 });
 
-Route::get('/clients','App\Http\Controllers\ClientsController@list');
-//Route::post('/clients','App\Http\Controllers\ClientsController@store');
+Route::get('/clients',[App\Http\Controllers\ClientsController::class,'index']);
+
+Route::get('/clients/create',[App\Http\Controllers\ClientsController::class,'create']);
 
 Route::post('/clients',[App\Http\Controllers\ClientsController::class,'store']);
