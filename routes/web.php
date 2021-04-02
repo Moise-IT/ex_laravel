@@ -18,14 +18,11 @@ Route::get('/',function(){
     return view('home');
 });
 
-Route::get('/contact',function(){
-    return view('contact');
-});
-
 Route::get('/a-propos',function(){
     return view('a-propos');
 });
 
+///cClientController
 Route::get('/clients',[App\Http\Controllers\ClientsController::class,'index']);
 
 Route::get('/clients/create',[App\Http\Controllers\ClientsController::class,'create']);
@@ -39,4 +36,8 @@ Route::post('/clients',[App\Http\Controllers\ClientsController::class,'store']);
 Route::patch('/clients/{client}',[App\Http\Controllers\ClientsController::class,'update']);
 
 Route::delete('/clients/{client}',[App\Http\Controllers\ClientsController::class,'destroy']);
+
+//ContactController
+Route::get('/contact',[App\Http\Controllers\ContactController::class,'create']);
+Route::post('/contact',[App\Http\Controllers\ContactController::class,'store']);
 
