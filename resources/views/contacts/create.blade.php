@@ -1,10 +1,13 @@
+
 @extends('layout')
 
 @section('content')
-    <h1>Contactz nous</h1>
-    <hr> 
-    <form action="/contact" method="post">
-       @csrf
+
+<h1>Contact nous</h1>
+
+@if(!session()->has('message'))
+    <form action="{{ route('contact.store') }}" method="post">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
                 <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Votre nom" value="{{ old('name')}}">
                 @error('name')
@@ -22,7 +25,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <textarea name="message"   placeholder="Votre message " cols="30" rows="10" class="form-control @error('message') is-invalid @enderror">{{ old('message')}}</textarea>
+                <textarea name="message" placeholder="Votre message " cols="30" rows="10" class="form-control @error('message') is-invalid @enderror">{{ old('message')}}</textarea>
                 @error('message')
                     <div class="invalid-feedback">
                         {{ $errors->first('message') }}
@@ -31,4 +34,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Envoyer mon message</button>
     </form>
+@endif
+
 @endsection

@@ -24,8 +24,13 @@
               </li>
         </ul>
 
+       <main>
+          @if(session()->has('message'))
+            <div class="alert alert-success">{{ session()->get('message') }}</div> 
+          @endif 
         <!--C'est ici qu'on va injecter nos pages -->
         @yield('content')
+       </main>
        </div>
     </body>
 </html>

@@ -22,6 +22,11 @@ class ContactController extends Controller
         ]);
 
         
+        //
         Mail::to($data['email'])->send(new ContactMail($data));
+        //Message flash
+        session()->flash('message','Votre message a bien été envoyer');
+        //redirection
+        return redirect('contact');
     }
 }
