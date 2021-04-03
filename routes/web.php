@@ -20,7 +20,7 @@ Route::get('/',function(){
 
 Route::get('/a-propos',function(){
     return view('a-propos');
-});
+})->middleware('test');
 
 ///cClientController
 Route::get('/clients',[App\Http\Controllers\ClientsController::class,'index']);

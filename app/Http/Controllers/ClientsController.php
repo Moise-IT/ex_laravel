@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
+    public function  __construct(){
+        $this->middleware('auth')->except(['index']);
+    }
+
     public function index(){  
         //recuperer tous les clients se trouvant dans la BDD qui sont actives
         $clients = Client::all();
