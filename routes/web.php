@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',function(){
     return view('home');
-});
+})->middleware('auth');
 
 Route::get('/a-propos',function(){
     return view('a-propos');
@@ -39,5 +39,6 @@ Route::delete('/clients/{client}',[App\Http\Controllers\ClientsController::class
 
 //ContactController
 Route::get('/contact',[App\Http\Controllers\ContactController::class,'create']);
-Route::post('/contact',[App\Http\Controllers\ContactController::class,'store']);
+
+Route::post('/contact',[App\Http\Controllers\ContactController::class,'store'])->name('contact.store');
 
