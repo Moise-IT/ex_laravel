@@ -5,7 +5,7 @@
 @section('content')
     <h1>Creer un nouveau client</h1>
     <hr>
-    <form action="/clients" method="post">
+    <form action="{{ route('client.store') }}" method="post">
         @include('includes.form')
         <button type="submit" class="btn btn-primary">Ajouter le client</button>
 

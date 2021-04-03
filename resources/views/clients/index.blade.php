@@ -4,7 +4,7 @@
 <!-- ici on injecte le contenu de notre page à la layout -->
 @section('content')
     <h1>Clients</h1>
-    <a href="/clients/create" class="btn btn-primary my-3">Nouveau client</a>
+    <a href="{{ route('client.create') }}" class="btn btn-primary my-3">Nouveau client</a>
     <table class="table">
         <thead>
           <tr>
