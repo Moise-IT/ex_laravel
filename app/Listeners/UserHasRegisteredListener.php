@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UserHasRegisteredListener
+class UserHasRegisteredListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -27,6 +27,8 @@ class UserHasRegisteredListener
      */
     public function handle($event)
     {
+        //ca permet d'envoyer l'email apres 5 seconde
+        sleep(5);
         //envoie l'email
         //$event represent l'evenement ainsi aue l'utilisateur passer dans le constructeur
         Mail::to($event->user->email)->send(new WelcomeUserMail($event->user));
